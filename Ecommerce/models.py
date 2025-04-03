@@ -20,7 +20,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     name = models.CharField(max_length=100)
     description = models.TextField(default='', blank=True)
-    rate_image = models.ForeignKey(Rating, on_delete=models.CASCADE)
+    rate_star = models.ForeignKey(Rating, on_delete=models.CASCADE)
     rate = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     list_quantity = models.CharField(max_length=2,choices=[
