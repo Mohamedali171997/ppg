@@ -37,12 +37,13 @@
       </div>
 
       <div class="sesame-header-right-section">
-        <a class="orders-link header-link" href="orders.html">
+        <a class="orders-link header-link" href="{% url "orders" %}">
+
           <span class="returns-text">Returns</span>
           <span class="orders-text">& Orders</span>
         </a>
 
-        <a class="cart-link header-link" href="checkout.html">
+        <a class="cart-link header-link" href="{% url 'cart' %}">
           <img class="cart-icon" src="{% static 'images/icons/cart-icon.png' %}">
           <div class="cart-quantity">3</div>
           <div class="cart-text">Cart</div>
