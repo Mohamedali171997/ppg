@@ -1,0 +1,34 @@
+{% load static %}
+<div class="sesame-header">
+      <div class="sesame-header-left-section">
+        <a href="{% url 'home' %}" class="header-link">
+          <img class="sesame-logo"
+            src="{% static 'images/sesame-logo.png' %}">
+          <img class="sesame-mobile-logo"
+            src="{% static 'images/sesame-mobile-logo-white.png' %}">
+        </a>
+      </div>
+
+      <div class="sesame-header-middle-section">
+        <input class="search-bar" type="text" placeholder="Search">
+
+        <button class="search-button">
+          <img class="search-icon" src="{% static 'images/icons/search-icon.png' %}">
+        </button>
+      </div>
+
+      <div class="sesame-header-right-section">
+        <a class="orders-link header-link" href="{% url "orders" %}">
+
+          <span class="returns-text">Returns</span>
+          <span class="orders-text">& Orders</span>
+        </a>
+
+        <a class="cart-link header-link" href="{% url 'cart' %}">
+          <img class="cart-icon" src="{% static 'images/icons/cart-icon.png' %}">
+          <div class="cart-quantity">3</div>
+          <div class="cart-text">Cart</div>
+        </a>
+      </div>
+    </div>
+    

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sesam shop</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Load a font called Roboto from Google Fonts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Here are the CSS files for this page. -->
+    <link rel="stylesheet" href="{% static 'styles/shared/general.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/shared/sesame-header.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/pages/sesame.css' %}">
+
+    <link rel="stylesheet" href="{% static 'styles/pages/cart/cart-header.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/shared/sesame-footer.css' %}">
+    
+  </head>
+  <body>
+   
+  {% block content %}
+  
+  
+  {% endblock content %} 
+
+  <div class="footer">
+    <div class="footer-left-section">
+      <a href="{% url 'home' %}" class="footer-link">
+        <img class="sesame-logo" src="{% static 'images/sesame-logo.png' %}">
+      </a>
+      <div class="footer-text">
+        &copy; 2025 SesameShop. All rights reserved.
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

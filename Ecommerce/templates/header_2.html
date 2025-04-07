@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="cart-header">
+    <div class="header-content">
+      <div class="cart-header-left-section">
+        <a href="{% url 'home' %}">
+          <img class="sesame-logo" src="{% static 'images/sesame-logo.png' %}">
+          <img class="sesame-mobile-logo" src="{% static 'images/sesame-mobile-logo.png' %}">
+        </a>
+      </div>
+
+      <div class="cart-header-middle-section">
+        cart (<a class="return-to-home-link"
+          href="{% url 'home' %}">3 items</a>)
+      </div>
+
+      <div class="cart-header-right-section">
+        <img src="{% static 'images/icons/checkout-lock-icon.png' %}" alt="Cart lock icon">
+      </div>
+    </div>
+  </div>

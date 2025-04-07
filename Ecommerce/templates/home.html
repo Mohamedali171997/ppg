@@ -1,56 +1,11 @@
+
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sesam shop</title>
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Load a font called Roboto from Google Fonts. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Here are the CSS files for this page. -->
-    <link rel="stylesheet" href="{% static 'styles/shared/general.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/shared/sesame-header.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/pages/sesame.css' %}">
-  </head>
-  <body>
-    <div class="sesame-header">
-      <div class="sesame-header-left-section">
-        <a href="{% url 'home' %}" class="header-link">
-          <img class="sesame-logo"
-            src="{% static 'images/sesame-logo.png' %}">
-          <img class="sesame-mobile-logo"
-            src="{% static 'images/sesame-mobile-logo-white.png' %}">
-        </a>
-      </div>
-
-      <div class="sesame-header-middle-section">
-        <input class="search-bar" type="text" placeholder="Search">
-
-        <button class="search-button">
-          <img class="search-icon" src="{% static 'images/icons/search-icon.png' %}">
-        </button>
-      </div>
-
-      <div class="sesame-header-right-section">
-        <a class="orders-link header-link" href="{% url "orders" %}">
-
-          <span class="returns-text">Returns</span>
-          <span class="orders-text">& Orders</span>
-        </a>
-
-        <a class="cart-link header-link" href="{% url 'cart' %}">
-          <img class="cart-icon" src="{% static 'images/icons/cart-icon.png' %}">
-          <div class="cart-quantity">3</div>
-          <div class="cart-text">Cart</div>
-        </a>
-      </div>
-    </div>
+{%block content %}
     
+    # include the header
+    {% include 'header.html' %}
+
     <div class="main">
       <div class="products-grid">
 
@@ -107,5 +62,4 @@
 
       </div>
     </div>
-  </body>
-</html>
+  {% endblock %}
