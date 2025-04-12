@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{%block content %}
+    <!-- include the header -->
+    {% include 'header.html' %}
+
+    <div class="main">
+      <div class="login-container">
+        <h1>Logout</h1>
+        <p>You have been logged out successfully.</p>
+        {% comment %} <a href="{% url 'login' %}" class="button-primary">Login Again</a> {% endcomment %}
+      </div>
+    </div>
+
+{% endblock %}
