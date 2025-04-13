@@ -33,3 +33,8 @@ def logout_user(request):
     messages.success(request, 'Logout successful')
    
     return redirect('home')
+
+def product_detail(request, pk):
+    product = Product.objects.get(pk=pk)
+ 
+    return render(request, 'product_detail.html', {'product': product})

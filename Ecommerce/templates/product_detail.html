@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+{% include 'header.html' %}
+{{ product.name }}
+{{ product.description }}
+{{ product.price }}
+{% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+{% endif %}
+{% endblock %}

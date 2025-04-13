@@ -18,7 +18,8 @@
 
         {% for product in products %}
         <div class="product-container">
-            <div class="product-image-container">
+            <div class="product-image-container"
+                onclick="window.location.href='{% url 'product_detail' product.id %}'"  style="cursor: pointer;">
               <img class="product-image"
                 src="{{ product.image.url }}">
             </div>
@@ -61,7 +62,9 @@
               <img src="{% static 'images/icons/checkmark.png' %}">
               Added
             </div>
-            <button class="add-to-cart-button button-primary">
+            <button class="add-to-cart-button button-primary"
+            onclick="window.location.href='{% url 'product_detail' product.id %}'"
+            >
               Add to Cart
             </button>
           </div>  
