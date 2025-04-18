@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+  {% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+  {% if form.errors %}
+    <p style="color: red;">Please correct the errors below:</p>
+  {% endif %}
+
+  <div class="big-container-signup">
+    <div class="signup-container">
+      <h2>Create Account</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="login-link">
+        Already have an account? <a href="{% url 'login' %}">Log in</a>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block alert %}
+  {% if messages %}
+    <div class="alert alert-info">
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock alert %}

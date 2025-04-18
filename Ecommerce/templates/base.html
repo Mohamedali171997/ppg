@@ -17,17 +17,25 @@
     <link rel="stylesheet" href="{% static 'styles/pages/sesame.css' %}">
 
     <link rel="stylesheet" href="{% static 'styles/pages/cart/cart-header.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/pages/login.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/pages/singup.css' %}">
     <link rel="stylesheet" href="{% static 'styles/shared/sesame-footer.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   </head>
   <body>
-  {% block alert %}
- 
-  {% endblock alert %}
+    {% block alert %}
+    {% endblock alert %}
+   
+    {% block header %}
+    {% endblock header %}
 
+
+
+  
   {% block content %}
-  {% endblock content %} 
- 
+  {% endblock content %}
+  
+
   <div class="footer">
     <div class="footer-left-section">
       <a href="{% url 'home' %}" class="footer-link">

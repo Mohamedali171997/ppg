@@ -1,25 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
-{%block content %}
-    <!-- include the header -->
-    {% include 'header.html' %}
+<div> 
+  {% block header%}
+  {% include 'header.html' %}
+  {% endblock header %}
+</div>
 
-    <div class="main">
+
+
+
+{%block content %}
+
+    <!-- include the header -->
+    <div class='big-container-login'>
       <div class="login-container">
-        <h1>Login</h1>
+        <h2>Login</h2>
         <form method="POST" action="{% url 'login' %}">
           {% csrf_token %}
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required>
-          <br>
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
+          <input type="text" id="username" name="username" placeholder="Username" required />
+          <input type="password" id="password" name="password" placeholder="Password" required />
           {{ form.as_p }}
-        
-          <button type="submit" class="button-primary">Login</button>
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me" name="remember-me" />
+            <label for="remember-me">Remember Me</label>
+          </div>
+          <button type="submit">Log In</button>
         </form>
-        {% comment %} <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p> {% endcomment %}
-      </div>
+        <div class="signup-link">
+          Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
+        </div>
+      </div>    
     </div>
-
+    
 {% endblock %}
