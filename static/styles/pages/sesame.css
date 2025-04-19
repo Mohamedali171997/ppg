@@ -1,47 +1,60 @@
 .main {
-  margin-top: 70px;
+  width: 100%;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .products-grid {
   background-color: rgba(251, 251, 251, 0.8);
   display: grid;
   grid-template-columns: repeat(8, 1fr);
+  margin-left: auto;
+  margin-right: auto;
+
+ 
 }
 
 @media (max-width: 2000px) {
   .products-grid {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
 
 @media (max-width: 1600px) {
   .products-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 1300px) {
   .products-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
-
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 575px) {
+
+@media (max-width: 800px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -128,6 +141,7 @@
      be invisible. Use JavaScript to show it. */
 
   opacity: 0;
+  transition: opacity 0.3s ease-in-out; /* Smooth visibility change */
 }
 
 .added-to-cart img {
