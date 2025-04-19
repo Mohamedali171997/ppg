@@ -3,9 +3,44 @@
 {% block content %}
 <!-- include the header -->
 {% include 'header.html' %}
-<br>
-<br>
-<br>
-<br>            
-<h1> testing order </h1>
+<div class="container">
+    <div class="form-container">
+      <form id="form">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Name.." required />
+          <input type="email" name="email" placeholder="Email.." required />
+        </div>
+
+        <hr />
+        <p class="section-title">Shipping Information:</p>
+        <hr />
+
+        <div class="form-group">
+          <input type="text" name="address" placeholder="Address.." />
+          <input type="text" name="city" placeholder="City.." />
+          <input type="text" name="state" placeholder="State.." />
+          <input type="text" name="zipcode" placeholder="Zip code.." />
+          <input type="text" name="country" placeholder="Country.." />
+        </div>
+
+        <input type="submit" value="Continue" class="button-primary orderbtn" />
+      </form>
+    </div>
+
+    <div class="summary-container">
+      
+      <a href="{% url 'cart' %}" class="back-link">← Back to Cart</a>
+      <hr />
+      <h3>Order Summary</h3>
+      <hr />
+      <div class="cart-row">
+        <img src="https://via.placeholder.com/100" alt="Product" />
+        <p>Product 1</p>
+        <p>$20.00</p>
+        <p>x2</p>
+      </div>
+      <h5>Items: 2</h5>
+      <h5>Total: $40</h5>
+    </div>
+  </div>
 {% endblock %}

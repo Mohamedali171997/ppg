@@ -1,0 +1,86 @@
+
+.product-page {
+    display: flex;
+    max-width: 1100px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    gap: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  
+  .image-section img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .info-section {
+    flex: 1;
+  }
+  
+  .badge {
+    background-color: #e53935;
+    color: white;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+  
+  h1 {
+    margin: 10px 0;
+    font-size: 24px;
+  }
+  
+  .material {
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-top: 20px;
+  }
+  
+  .new-price {
+    font-size: 22px;
+    color: #222;
+    font-weight: bold;
+  }
+  
+  .options {
+    margin-top: 30px;
+  }
+  
+  .options p {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .color-options button,
+  .size-options button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .color-options .active,
+  .size-options .active {
+    border-color: #333;
+    background-color: #eee;
+  }
+  
+  .color-options button:hover,
+  .size-options button:hover {
+    background-color: #f0f0f0;
+  }
+  
+ 

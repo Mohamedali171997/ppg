@@ -4,10 +4,61 @@
 {% block content %}
 
 {% include 'header.html' %}
-{{ product.name }}
-{{ product.description }}
-{{ product.price }}
-{% if product.image %}
+
+<div>
+    <div class="product-page">
+    <div class="image-section">
     <img src="{{ product.image.url }}" alt="{{ product.name }}">
-{% endif %}
+    </div>
+
+    <div class="info-section">
+     
+      <h1>{{ product.name }}</h1>
+      <p class="material">{{ product.description }}</p>
+
+      <p class="new-price">{{ product.price }}</p>
+
+      <button class="button-primary">Add to cart</button>
+    </div>
+</div>
 {% endblock %}
+</div>
+
+{% comment %} to do if en sale
+  </div>
+  <di>
+    {% block content %}
+    <div class="product-page">
+    <div class="image-section">
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    </div>
+
+    <div class="info-section">
+      <span class="badge">On Sale</span>
+      <h1>{{ product.name }}</h1>
+      <p class="material">{{ product.description }}</p>
+
+      <p class="old-price">{{ product.price }}</p>
+      <p class="new-price">$10.00</p>
+
+      <div class="options">
+        <p>COLOR</p>
+        <div class="color-options">
+          <button>Red</button>
+          <button>White</button>
+          <button class="active">Black</button>
+        </div>
+
+        <p>SIZE</p>
+        <div class="size-options">
+          <button>S</button>
+          <button>M</button>
+          <button class="active">L</button>
+          <button>XL</button>
+        </div>
+      </div>
+
+      <button class="add-cart">Add to cart</button>
+    </div>
+</div> {% endcomment %}
+  
