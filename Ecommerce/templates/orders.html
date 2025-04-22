@@ -33,14 +33,17 @@
       <hr />
       <h3>Order Summary</h3>
       <hr />
+      {% for item in items %}
       <div class="cart-row">
-        <img src="{% static 'images/111.png' %}" alt="Product" />
-        <p>Product 1</p>
-        <p>$20.00</p>
-        <p>x2</p>
+        <img src="{{item.product.image.url}}" alt="Product" />
+        <p>{{ item.product.name }}</p>
+        <p>${{ item.product.price }}</p>
+        <p>x{{ item.quantity }}</p>
       </div>
-      <h5>Items: 2</h5>
-      <h5>Total: $40</h5>
+
+      {% endfor %}
+      <h5>Items: {{order.get_cart_items }}</h5>
+      <h5>Total: {{ order.get_cart_totalplus_shipping_and_tax}}</h5>
     </div>
   </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Product,Rating
+from .models import Product, Rating, Order
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -11,9 +11,36 @@ def home(request):
     products = Product.objects.all()
     return render(request, 'home.html', {'products': products})
 def cart(request):
-    return render(request, 'cart.html', {})
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order = Order.objects.get_or_create(customer=customer, complete=False)[0]
+        items = order.orderitem_set.all()
+    else:
+        # Create empty cart for now for non-logged in user
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0
+                 , 'get_shipping_cost': 0, 'get_cart_totalplus_shipping': 0
+                 , 'get_estimated_tax': 0, 'get_cart_totalplus_shipping_and_tax': 0
+                }
+
+    context = {'items':items, 'order': order}
+    return render(request, 'cart.html', context)
+
 def orders(request):
-    return render(request, 'orders.html', {})
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order = Order.objects.get_or_create(customer=customer, complete=False)[0]
+        items = order.orderitem_set.all()
+    else:
+        # Create empty cart for now for non-logged in user
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0
+                 , 'get_shipping_cost': 0, 'get_cart_totalplus_shipping': 0
+                 , 'get_estimated_tax': 0, 'get_cart_totalplus_shipping_and_tax': 0
+                }
+
+    context = {'items':items, 'order': order}
+    return render(request, 'orders.html', context)
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']

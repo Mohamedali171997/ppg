@@ -3,11 +3,12 @@
 {% block content %}
 <!-- include the header -->
 {% include 'header_2.html' %}
-<div class="main">
-    <div class="page-title">Review your order</div>
 
+<div class="main">
+  <div class="page-title">Review your order</div>
     <div class="checkout-grid">
       <div class="order-summary">
+        {% for item in items %}
         <div class="cart-item-container">
           <div class="delivery-date">
             Saturday, April 18, 2025
@@ -15,18 +16,18 @@
 
           <div class="cart-item-details-grid">
             <img class="product-image"
-              src="{% static 'images/111.png' %}">
+              src="{{ item.product.image.url }}">
 
             <div class="cart-item-details">
               <div class="product-name">
-                straw sunhat
+                {{ item.product.name }}
               </div>
               <div class="product-price">
-                10.90 TND
+                Prix {{ item.product.price }} TND
               </div>
               <div class="product-quantity">
                 <span>
-                  Quantity: <span class="quantity-label">2</span>
+                  Quantity: <span class="quantity-label">{{ item.quantity }}</span>
                 </span>
                 <span class="update-quantity-link link-primary">
                   Update
@@ -35,12 +36,17 @@
                   Delete
                 </span>
               </div>
+                <div class="product-price total">
+
+                    Total {{ item.get_total }} TND 
+                </div>
+              
             </div>
           </div>
-
+        
         </div>
+        {% endfor %}
       </div>
-            
       
       <div class="payment-summary">
         <div class="payment-summary-title">
@@ -48,28 +54,28 @@
         </div>
 
         <div class="payment-summary-row">
-          <div>Items (3):</div>
-          <div class="payment-summary-money">$42.75</div>
+          <div>Items ({{ order.get_cart_items }}):</div>
+          <div class="payment-summary-money">{{ order.get_cart_total }} TND</div>
         </div>
 
         <div class="payment-summary-row">
           <div>Shipping &amp; handling:</div>
-          <div class="payment-summary-money">$4.99</div>
+          <div class="payment-summary-money">{{ order.get_shipping_cost }} TND</div>
         </div>
 
         <div class="payment-summary-row subtotal-row">
           <div>Total before tax:</div>
-          <div class="payment-summary-money">$47.74</div>
+          <div class="payment-summary-money">{{ order.get_cart_totalplus_shipping }} TND</div>
         </div>
 
         <div class="payment-summary-row">
           <div>Estimated tax (10%):</div>
-          <div class="payment-summary-money">$4.77</div>
+          <div class="payment-summary-money">{{ order.get_estimated_tax }} TND</div>
         </div>
 
         <div class="payment-summary-row total-row">
           <div>Order total:</div>
-          <div class="payment-summary-money">$52.51</div>
+          <div class="payment-summary-money">{{ order.get_cart_totalplus_shipping_and_tax }} TND</div>
         </div>
 
         <button class="place-order-button button-primary"
@@ -78,5 +84,6 @@
         </button>
       </div>
     </div>
+
   </div>
 {% endblock %}

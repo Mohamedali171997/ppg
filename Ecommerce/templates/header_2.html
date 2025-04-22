@@ -14,7 +14,7 @@
           href="{% url 'home' %}">3 items</a>)
       </div>
 
-      <div class="cart-header-right-section">
+      <div class="cart-header-right-section" onclick="location.href='{% url 'login' %}'">
         <img src="{% static 'images/icons/checkout-lock-icon.png' %}" alt="Cart lock icon">
       </div>
     </div>
