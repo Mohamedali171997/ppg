@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% block header %}
+  {% include 'header2.html' %}
+{% endblock header %}
 
 {% block content %}
-
-{% include 'header.html' %}
 
 <div>
     <div class="product-page">
@@ -16,7 +17,7 @@
       <h1>{{ product.name }}</h1>
       <p class="material">{{ product.description }}</p>
 
-      <p class="new-price">{{ product.price }}</p>
+      <p class="new-price">{{ product.price }} TND</p>
 
       <button class="button-primary">Add to cart</button>
     </div>

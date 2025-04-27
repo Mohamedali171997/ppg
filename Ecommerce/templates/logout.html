@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
 {%block content %}
-    <!-- include the header -->
-    {% include 'header.html' %}
-
     <div class="main">
       <div class="login-container">
         <h1>Logout</h1>

@@ -11,7 +11,7 @@
 
       <div class="cart-header-middle-section">
         cart (<a class="return-to-home-link"
-          href="{% url 'home' %}">3 items</a>)
+          href="{% url 'home' %}">{{ order.get_cart_items }} items</a>)
       </div>
 
       <div class="cart-header-right-section" onclick="location.href='{% url 'login' %}'">

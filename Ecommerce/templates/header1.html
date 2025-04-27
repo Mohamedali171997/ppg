@@ -1,0 +1,39 @@
+{% load static %}
+
+<div class="sesame-header">
+  <div class="sesame-header-left-section">
+    <a href="{% url 'home' %}" class="header-link">
+      <img class="sesame-logo" src="{% static 'images/sesame-logo.png' %}">
+      <img class="sesame-mobile-logo" src="{% static 'images/sesame-mobile-logo-white.png' %}">
+    </a>
+  </div>
+
+  <div class="sesame-header-middle-section">
+    <input class="search-bar" type="text" placeholder="Search">
+    <button class="search-button button-primary">
+      <img class="search-icon" src="{% static 'images/icons/search-icon.png' %}">
+    </button>
+  </div>
+
+  <div class="sesame-header-right-section">
+    {% if user.is_authenticated %}
+      <a class="account-link header-link" href="{% url 'logout' %}">
+        <img class="cart-icon" src="{% static 'images/icons/logout.png' %}">
+      </a>
+    {% else %}
+      <a class="account-link header-link" href="{% url 'login' %}">
+        <img class="cart-icon" src="{% static 'images/icons/login-avatar.png' %}">
+      </a>
+    {% endif %}
+
+    <a class="orders-link header-link" href="{% url 'orders' %}">
+      <img class="cart-icon" src="{% static 'images/icons/shopping-bag.png' %}">
+    </a>
+
+    <a class="cart-link header-link" href="{% url 'cart' %}">
+      <img class="cart-icon" src="{% static 'images/icons/cart-icon.png' %}">
+      <div class="cart-text">Cart</div>
+      <div class="cart-quantity">{{ order.get_cart_items }}</div>
+    </a>
+  </div>
+</div>

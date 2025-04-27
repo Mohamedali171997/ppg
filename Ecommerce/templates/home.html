@@ -1,22 +1,12 @@
 
 {% extends "base.html" %}
 {% load static %}
+{% block header %}
+{% include 'header1.html' %}
+{% endblock header %}
 {% block content %}
-{% block alert%}
-{% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  {% endfor %}
-{% endif %}
-{% endblock %}
-    {% include 'header.html' %}
-  
     <div class="main">
       <div class="products-grid">
-
         {% for product in products %}
         <div class="product-container">
             <div class="product-image-container"
@@ -63,12 +53,12 @@
               <img src="{% static 'images/icons/checkmark.png' %}">
               Added
             </div>
-            <button class="add-to-cart-button button-primary"
-            onclick="window.location.href='{% url 'product_detail' product.id %}'"
-            >
+            <button data-product="{{product.id}}" data-action="add" 
+
+              class="add-to-cart-button button-primary update-cart">
               Add to Cart
             </button>
-          </div>  
+            </div>  
         {% endfor %}
 
       </div>
