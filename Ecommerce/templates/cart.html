@@ -29,15 +29,23 @@
                 Prix {{ item.product.price }} TND
               </div>
               <div class="product-quantity">
-                <span>
-                  Quantity: <span class="quantity-label">{{ item.quantity }}</span>
-                </span>
-                <span class="update-quantity-link link-primary">
-                  Update
-                </span>
-                <span class="delete-quantity-link link-primary">
-                  Delete
-                </span>
+                <div class="item-row" style="display: flex; align-items: center; gap: 10px;">
+                  <span>
+                    Quantity: <span class="quantity-label">{{ item.quantity }}</span>
+                  </span>
+                
+                  <div class="quantity-link">
+                    <div class="update-quantity-link link-primary">
+                      <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart img-arrow" src="{% static 'images/icons/arrow-up.png' %}" alt="Increase quantity" />
+                      <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart img-arrow" src="{% static 'images/icons/arrow-down.png' %}" alt="Decrease quantity" />
+                    </div>
+                  </div>
+                
+                  <span class="delete-quantity-link link-primary update-cart" data-product="{{ item.product.id }}" data-action="delete">
+                    Delete
+                  </span>
+                </div>
+                
               </div>
                 <div class="product-price total">
 

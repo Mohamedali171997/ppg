@@ -6,8 +6,14 @@
   {% endblock header %}
 </div>
 
+{%block message%}
 
 
+  {% if message %}
+    <div class="alert">{{ message }}</div>
+  {% endif %}
+  
+{%endblock message%}
 
 {%block content %}
 
