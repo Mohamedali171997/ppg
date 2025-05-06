@@ -24,7 +24,31 @@
           <input type="text" name="country" placeholder="Country.." />
         </div>
 
-        <input type="submit" value="Continue" class="button-primary orderbtn" />
+
+          <button id="checkout-button" class="button-primary">Payer avec Carte</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+
+    document.getElementById("checkout-button").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        fetch("{% url 'create_checkout_session' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            return stripe.redirectToCheckout({ sessionId: data.id });
+        });
+    });
+</script>
+
       </form>
     </div>
 

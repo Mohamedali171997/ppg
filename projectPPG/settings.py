@@ -119,11 +119,31 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ['static/']
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
-MEDIA_URL = os.path.join(BASE_DIR, 'media/')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
+#MEDIA_URL = os.path.join(BASE_DIR, 'media/')
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+import os
+
+# URL publique pour accéder aux médias
+MEDIA_URL = '/media/'
+
+# Dossier local où Django va stocker les uploads
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+
+#stripe
+STRIPE_PUBLIC_KEY = 'pk_test_51RLNjcFMz5azreRa62QflTecDUTss9B0M9FaCeDJ21EFddVY52GRmifgHViMV48FMAeTkWkqQTXtr375FIBDslPt00oGKfDaWo'
+STRIPE_SECRET_KEY = 'sk_test_51RLNjcFMz5azreRaeRfrihlmfPfxZSoQwlScDr3qW29IxbqlQW5dd3VnZGvfwOskkNWYv9kRDaoUpeYyYXmGJT2p00rAgZoVGi'
+STRIPE_WEBHOOK_SECRET = 'votre_webhook_secret'

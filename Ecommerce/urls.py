@@ -13,4 +13,9 @@ urlpatterns = [
     path('header1/', views.header1, name='header1'),
     path('header2/', views.header2, name='header2'),
     path('cart/update_item/', views.update_item, name='update_item'),
+    #stripe payment
+path('create-checkout-session/', views.create_checkout_session, name='create_checkout_session'),
+    path('create-checkout-session/', views.create_checkout_session, name='create_checkout_session'),
+   # path('success/', views.payment_success, name='payment_success'),
+   # path('cancel/', views.payment_cancel, name='payment_cancel'),
 ]
