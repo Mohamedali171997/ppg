@@ -13,10 +13,25 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
+
+import environ # NEW: Import environ
+
+# NOUVEAU : Initialisez django-environ
+env = environ.Env(
+    # Définissez les types par défaut et les valeurs fallback.
+    # Si DEBUG n'est pas dans .env, il sera False.
+    DEBUG=(bool, False),
+    # Si GEMINI_API_KEY n'est pas dans .env, il sera une chaîne vide.
+    GEMINI_API_KEY=(str, ''),
+    # Vous pouvez ajouter d'autres variables si vous comptez les gérer avec .env
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+# NOUVEAU : Chargez les variables du fichier .env
+# Cela cherchera un fichier .env à la racine de votre projet.
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -147,3 +162,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STRIPE_PUBLIC_KEY = 'pk_test_51RLNjcFMz5azreRa62QflTecDUTss9B0M9FaCeDJ21EFddVY52GRmifgHViMV48FMAeTkWkqQTXtr375FIBDslPt00oGKfDaWo'
 STRIPE_SECRET_KEY = 'sk_test_51RLNjcFMz5azreRaeRfrihlmfPfxZSoQwlScDr3qW29IxbqlQW5dd3VnZGvfwOskkNWYv9kRDaoUpeYyYXmGJT2p00rAgZoVGi'
 STRIPE_WEBHOOK_SECRET = 'votre_webhook_secret'
+
+
+# MODIFIÉ : Lisez la clé API Gemini depuis l'environnement
+GEMINI_API_KEY = env('GEMINI_API_KEY')

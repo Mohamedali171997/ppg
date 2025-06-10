@@ -269,3 +269,55 @@ def create_checkout_session(request):
             print("Stripe Checkout error:")
             traceback.print_exc()
             return JsonResponse({'error': str(e)}, status=500)
+
+
+
+
+
+
+
+
+
+
+# Ecommerce/views.py
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+import json
+import google.generativeai as genai
+import traceback # Good for debugging errors
+
+# ... (your existing imports and view functions like home, cart, orders, etc.) ...
+
+# Configure Gemini API Key
+genai.configure(api_key=settings.GEMINI_API_KEY)
+
+@csrf_exempt # Important for POST requests without CSRF token from non-form sources
+def gemini_chat_view(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user_message = data.get('message', '')
+
+            if not user_message:
+                return JsonResponse({'error': 'Message not provided'}, status=400)
+
+            # Initialize the generative model
+            model = genai.GenerativeModel('gemini-2.0-flash')
+
+            # Start a chat session (if you want to maintain conversation context)
+            # For a simple Q&A, you might just use model.generate_content
+            # To maintain context, you would typically store chat history (e.g., in session)
+            # For this example, let's keep it simple with a single prompt.
+            # For a more advanced assistant, consider using model.start_chat() and passing history.
+            response = model.generate_content(user_message)
+            assistant_response = response.text
+
+            return JsonResponse({'response': assistant_response})
+
+        except Exception as e:
+            traceback.print_exc() # Print full traceback for debugging
+            return JsonResponse({'error': f'An error occurred: {str(e)}'}, status=500)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)

@@ -1,6 +1,10 @@
 from django.urls import path
 from . import views
-
+from django.contrib import admin
+from django.urls import path
+from Ecommerce import views # Import your views from the Ecommerce app
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('', views.home, name='home'),
     path('cart/', views.cart, name='cart'),
@@ -18,4 +22,7 @@ path('create-checkout-session/', views.create_checkout_session, name='create_che
     path('create-checkout-session/', views.create_checkout_session, name='create_checkout_session'),
    # path('success/', views.payment_success, name='payment_success'),
    # path('cancel/', views.payment_cancel, name='payment_cancel'),
+    # NEW: URL for the Gemini Assistant
+    path('gemini-assistant/', views.gemini_chat_view, name='gemini_assistant'),
+
 ]

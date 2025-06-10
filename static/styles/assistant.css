@@ -1,0 +1,178 @@
+/* static/styles/assistant.css */
+
+/* Floating Button */
+.chat-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff; /* Example: Blue button */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Makes it circular */
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Higher than chat-container */
+    transition: background-color 0.3s ease;
+}
+
+.chat-toggle-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.chat-toggle-button .chat-icon {
+    width: 30px; /* Adjust size of your chat icon */
+    height: 30px;
+    object-fit: contain;
+}
+
+
+/* Chat Container (initially hidden) */
+.chat-container {
+    position: fixed;
+    bottom: 90px; /* Position above the button */
+    right: 20px;
+    width: 350px;
+    height: 450px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000; /* Ensure it's above other elements but below the button */
+    transition: all 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+    transform: translateY(20px); /* Start slightly below */
+    opacity: 0; /* Start invisible */
+    pointer-events: none; /* Make it unclickable when hidden */
+}
+
+.chat-container.hidden {
+    transform: translateY(20px) scale(0.9); /* Smaller and lower when hidden */
+    opacity: 0;
+    pointer-events: none; /* Ensure no interaction when hidden */
+}
+
+.chat-container.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1;
+    pointer-events: auto; /* Enable interaction when visible */
+}
+
+/* Chat Header */
+.chat-header {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.close-chat-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #888;
+    cursor: pointer;
+    line-height: 1; /* Aligns the 'x' better */
+}
+
+.close-chat-button:hover {
+    color: #555;
+}
+
+
+/* Existing chat box styles (keep as is or adjust) */
+.chat-box {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #e0f2f7; /* Light blue */
+    color: #333;
+    border-bottom-right-radius: 5px;
+}
+
+.message.assistant {
+    align-self: flex-start;
+    background-color: #f1f0f0;
+    color: #333;
+    border-bottom-left-radius: 5px;
+}
+
+/* Chat Input Area */
+.chat-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.chat-input-area input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.chat-input-area button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input-area button:hover {
+    background-color: #218838;
+}
+
+/* Optional: Add some basic styling for the chat icon if you use it */
+.chat-icon {
+    /* styles for your chat icon image if you use one */
+}
+
+
+
+/* Loading dots animation */
+.loading-dots {
+    animation: blink 1s infinite;
+}
+
+.loading-dots:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
